@@ -36,6 +36,10 @@ def run(playwright: Playwright):
         articleList.append(title)
 
     articleList.remove("Title")
+
+    createJsonFile(page, articleList[0])
+
+    """
     page.get_by_role("link", name= articleList[0]).click()
 
     authors = getDivValues(page, "Authors")
@@ -48,11 +52,9 @@ def run(playwright: Playwright):
     print("Date: " + date)
     print("Publisher: " + publisher)
     print("Description: " + description)
+    """
 
     page.screenshot(path="thelink.png")
-
-
-    #page.get_by_role("listitem").filter() has=page.get_by_role("heading", name="Product 2")).get_by_role("button", name="Add to cart").click()
 
     #Gets the HTMl of the page
     html = page.content();
@@ -79,37 +81,44 @@ def getDivValues(page, textLocator):
 
     #Return data
     return textValue
-"""
+
 def createJsonFile(page, currentTitle):
-    emptyJSON = {
-    "id" : None,
-    "link" : None,
-    "title" : None,
-    "date" : None,
-    "authors" : [],
-    "topics" : [],
-    "form" : "paper",
-    "doi" : None,
-    "publisher" : "PUBLISHER",
-    "cites" : [],
-    "summary" : ""
-    }
+    
 
     #Click to the link with the title
     page.get_by_role("link", name = currentTitle).click()
 
     #Get all nesscary data
-    authors = getDivValues(page, "Authors")
+    authors = getDivValues(page, "Authors").split(", ")
     date = getDivValues(page, "Publication date")
     publisher = getDivValues(page, "Publisher")
     description = getDivValues(page,"Description")
+    url = page.url
 
-    print("Title: " + articleList[0])
+    newJson = {
+        "id" : globalIndex,
+        "link" : url,
+        "title" : currentTitle,
+        "date" : date,
+        "authors" : authors,
+        "topics" : [],
+        "form" : "paper",
+        "doi" : None,
+        "publisher" : publisher,
+        "cites" : [],
+        "summary" : description
+    }
+    with open("articles.json", "w", encoding="utf-8") as articleFile:
+        json.dump(newJson, articleFile, indent=4)
+
+
+    """
+    print("Title: " + currentTitle)
     print("Authors: " + authors)
     print("Date: " + date)
     print("Publisher: " + publisher)
     print("Description: " + description)
-"""
+    """
 
 
 with sync_playwright() as playwright:

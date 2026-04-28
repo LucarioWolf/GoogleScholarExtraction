@@ -1,0 +1,16 @@
+{
+    "id": 0,
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=k12ONA8AAAAJ&citation_for_view=k12ONA8AAAAJ:f2IySw72cVMC",
+    "title": "Data Mining in Finance\u2014Advances in Relational and Hybrid Methods",
+    "date": "2000",
+    "authors": [
+        "Boris Kovalerchuk",
+        "Evgenii Vityaev"
+    ],
+    "topics": [],
+    "form": "paper",
+    "doi": null,
+    "publisher": "Kluwer Academic Publishers",
+    "cites": [],
+    "summary": "Data Mining methods map objects onto target values by discovered regularities in the data. These objects and mappings should be represented formally in some formal language. The selection of a language and a method for discovering regularities is a serious challenge. The uncertainty of problem description and method capability is among the most obvious difficulties in the process of selection.Historically, methods based on attribute-value languages (AVLs) have been most popular in applications of learning algorithms. Neural networks (Chapter 2) and decision trees (Chapter 3) are typical examples of methods based on AVLs. They are relatively simple, efficient, and can handle noisy data. However, these methods have serious limitations in how they represent knowledge."
+}
